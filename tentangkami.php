@@ -25,12 +25,14 @@
         </p>
         <br>
         <p class="text-gray-700 text-lg leading-relaxed">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aspernatur iste quos, 
-          doloribus illum animi. Repudiandae, quas. Esse, molestias assumenda?
+         Awalnya kami bisa bersama itu, mulai dari saya tanya ke temen satu jurusan mengenai nomer nya Dea, 
+         lalu setelah saya dapat nomer nya itu saya langsung tanya jam buka Trasa Cworking untuk hari jumat nya kebetulan
+         sudah mulai PKL bulan November 
         </p>
       </div>
     </div>
   </section>
 <?php include "footer.php"; ?>
+<script src="src/script.js"></script>
 </body>
 </html>
