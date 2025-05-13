@@ -28,11 +28,11 @@
     }
   </style>
     <!-- Home Section -->
-<section class="bg-blue-50 min-h-screen flex items-center justify-center px-6 py-16">
+    <section id="home-section" class="opacity-0 translate-y-10 transition-all duration-1000 bg-blue-50 min-h-screen flex items-center justify-center px-6 py-16">
   <div class="text-center max-w-xl">
-  <h1 class="text-4xl font-extrabold text-blue-700 mb-4 text-center">
-    <span class="wave">👋</span> Selamat Datang di Website Kita
-  </h1>
+    <h1 class="text-4xl font-extrabold text-blue-700 mb-4 text-center">
+      <span class="wave">👋</span> Selamat Datang di Website Kita
+    </h1>
     <p class="text-gray-700 text-lg mb-6">
       Ini adalah tempat terbaik kami untuk menyimpan dan membagikan <strong>foto</strong> maupun <strong>video</strong> dengan aman dan mudah.
     </p>
@@ -43,6 +43,15 @@
     </a>
   </div>
 </section>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('home-section');
+    section.classList.remove('opacity-0', 'translate-y-10');
+    section.classList.add('opacity-100', 'translate-y-0');
+  });
+</script>
+
 
 <script src="src/script.js"></script>
 <?php include "footer.php"; ?>

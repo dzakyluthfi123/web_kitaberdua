@@ -16,30 +16,31 @@
       <h1 class="text-4xl font-bold text-blue-700 mb-10 text-center">Kontak Kami</h1>
 
       <div class="flex flex-col md:flex-row gap-10">
-      <form id="whatsappForm" class="w-full md:w-1/2 space-y-6">
-  <div>
-    <label class="block mb-1 font-medium" for="nama">Nama</label>
-    <input type="text" id="nama" name="nama" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nama lengkap Anda">
-  </div>
+        
+        <!-- Formulir: Muncul dari kiri -->
+        <form id="whatsappForm" class="w-full md:w-1/2 space-y-6 opacity-0 -translate-x-10 transition-all duration-1000" >
+          <div>
+            <label class="block mb-1 font-medium" for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nama lengkap Anda">
+          </div>
 
-  <div>
-    <label class="block mb-1 font-medium" for="hp">No HP</label>
-    <input type="text" id="hp" name="hp" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="08xxxxxxxxxx">
-  </div>
+          <div>
+            <label class="block mb-1 font-medium" for="hp">No HP</label>
+            <input type="text" id="hp" name="hp" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="08xxxxxxxxxx">
+          </div>
 
-  <div>
-    <label class="block mb-1 font-medium" for="saran">Saran / Pesan</label>
-    <textarea id="saran" name="saran" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tulis pesan Anda..."></textarea>
-  </div>
+          <div>
+            <label class="block mb-1 font-medium" for="saran">Saran / Pesan</label>
+            <textarea id="saran" name="saran" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tulis pesan Anda..."></textarea>
+          </div>
 
-  <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transition duration-300 w-full">
-    Kirim
-  </button>
-</form>
+          <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transition duration-300 w-full">
+            Kirim
+          </button>
+        </form>
 
-
-        <!-- Info Kontak -->
-        <div class="w-full md:w-1/2 flex flex-col justify-center space-y-6">
+        <!-- Info Kontak: Muncul dari kanan -->
+        <div id="contactInfo" class="w-full md:w-1/2 flex flex-col justify-center space-y-6 opacity-0 translate-x-10 transition-all duration-1000 delay-200">
           <div class="bg-blue-50 p-6 rounded-xl shadow flex items-center gap-4">
             <div class="text-3xl text-blue-600">📞</div>
             <div>
@@ -66,22 +67,35 @@
   </section>
 
   <?php include "footer.php"; ?>
+
   <script>
-  document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    // WhatsApp kirim otomatis
+    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    const nama = document.getElementById('nama').value;
-    const hp = document.getElementById('hp').value;
-    const saran = document.getElementById('saran').value;
+      const nama = document.getElementById('nama').value;
+      const hp = document.getElementById('hp').value;
+      const saran = document.getElementById('saran').value;
 
-    const nomorTujuan = "6281226804248"; 
+      const nomorTujuan = "6281226804248";
+      const pesan = `Haiii, Saya ${nama}%0AHP: ${hp}%0AMau menyampaikan:%0A${saran}`;
+      const url = `https://wa.me/${nomorTujuan}?text=${pesan}`;
 
-    const pesan = `Haiii, Saya ${nama}%0AHP: ${hp}%0A Mau menyampaikan:%0A${saran}`;
-    const url = `https://wa.me/${nomorTujuan}?text=${pesan}`;
+      window.open(url, '_blank');
+    });
 
-    window.open(url, '_blank');
-  });
-</script>
+    // Animasi muncul saat halaman diload
+    window.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('whatsappForm');
+      const info = document.getElementById('contactInfo');
+
+      form.classList.remove('opacity-0', '-translate-x-10');
+      form.classList.add('opacity-100', 'translate-x-0');
+
+      info.classList.remove('opacity-0', 'translate-x-10');
+      info.classList.add('opacity-100', 'translate-x-0');
+    });
+  </script>
 
 </body>
 </html>
